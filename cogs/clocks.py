@@ -1,12 +1,14 @@
 import discord
 from discord.ext import commands
 
+from .utils import *
+
 class ClockCommands(commands.Cog):
     """
     Module handling commands related to creating clocks
 
     Functions:
-        progress_clock: creates an embed with the desired clock and ability to increment, decrement or delete the clock
+        progress_clock:     creates an embed with the desired clock and ability to increment, decrement or delete the clock
 
     """
     def __init__(self, bot):
@@ -44,7 +46,8 @@ class ClockCommands(commands.Cog):
         embed.set_image(url = f"attachment://{colour}_{segments}_{ticks}.gif")
 
         # Sends the embed to discord, and attaches the View class that contains the buttons
-        await ctx.respond(file = discord.File(f"resources\clock_images\{colour}_{segments}_{ticks}.gif"), embed = embed)
+        await ctx.respond(file = discord.File(f"resources\clock_images\{colour}_{segments}_{ticks}.gif"), embed = embed,
+                          view = ProgressView(segments = segments, current_ticks = ticks, colour = colour, title = title))
 
 
 # Sets up the cog and adds it to the bot
