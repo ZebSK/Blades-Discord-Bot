@@ -70,8 +70,8 @@ class ProgressView(View):  # Create a class called Buttons that subclasses disco
         Functions:
             callback:       deletes the clock when button is pressed
         """
-        def __init__(self, label: str, style: ButtonStyle, custom_id: str):
-            super().__init__(label = label, style = style, custom_id = custom_id)
+        def __init__(self, label: str, style: ButtonStyle):
+            super().__init__(label = label, style = style)
 
         async def callback(self, interaction: discord.Interaction): 
             """ Deletes the clock when button is pressed """
