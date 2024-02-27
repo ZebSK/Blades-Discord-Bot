@@ -13,6 +13,7 @@ class ProgressView(View):  # Create a class called Buttons that subclasses disco
     """
     def __init__(self, segments: int, current_ticks: int, colour: str, title: str) -> None:
         super().__init__(timeout = None)  # Makes sure buttons do not timeout
+        self.title = title
 
         # Create the embed
         embed = Embed(title = title)
@@ -58,7 +59,7 @@ class ProgressView(View):  # Create a class called Buttons that subclasses disco
             else: next_ticks = max(self.current_ticks - 1, 0)
 
             # When pressed, send new embed to discord and delete message with this button
-            await interaction.response.send_message(file = discord.File(f"bot_files\clock_gifs\{self.colour}_{self.segments}_{next_ticks}.gif"),
+            await interaction.response.send_message(file = discord.File(f"resources\clock_images\{self.colour}_{self.segments}_{next_ticks}.gif"),
                             embed = self.embed.set_image(url = f"attachment://{self.colour}_{self.segments}_{next_ticks}.gif"),
                             view = ProgressView(segments = self.segments, current_ticks = next_ticks, colour = self.colour, title = self.title))
             await interaction.message.delete()
