@@ -18,3 +18,6 @@ Generates a 4, 6, or 8 segment clock in either red or green. Title and starting 
 Increment, decrement and delete buttons allow the clock to be edited
 
 ![Demo2](https://github.com/ZebSK/DoskBot/blob/main/resources/demo_images/demo_progress_clock_2.gif?raw=true)
+
+### `/box_ghost`
+Sends a Box Ghost gif to the server
