@@ -5,7 +5,7 @@ from config import Settings as s
 
 # Fetch the bot token from the .env file
 env = dotenv_values(".env")
-token = env["TOKEN"]
+token = env[s.token_name]
 
 # Create a new instance of the bot class and load cogs (modules)
 bot = discord.Bot()
