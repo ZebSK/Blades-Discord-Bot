@@ -2,6 +2,8 @@ import discord
 from discord import ButtonStyle, Embed
 from discord.ui import View, Button
 
+from .database import save_buttons, delete_buttons
+
 """ Creates Button Views """
 class ProgressView(View):  # Create a class called Buttons that subclasses discord.ui.View
     """
@@ -11,9 +13,9 @@ class ProgressView(View):  # Create a class called Buttons that subclasses disco
         StepButton:     creates a button to increment or decrement the clock by one
         DeleteButton:   creates a button to delete the clock
     """
-    def __init__(self, id: str, segments: int, current_ticks: int, colour: str, title: str) -> None:
+    def __init__(self, id: str, segments: int, current_ticks: int, colour: str, title: str, reset: bool = False) -> None:
         super().__init__(timeout = None)  # Makes sure buttons do not timeout
-        self.title = title
+        if not reset: save_buttons(id = id, segments = segments, ticks = current_ticks, colour = colour, title = title)
 
         # Create unique ids for each button
         self.title = title
@@ -73,6 +75,7 @@ class ProgressView(View):  # Create a class called Buttons that subclasses disco
                             view = ProgressView(id = next_id, segments = self.segments, current_ticks = next_ticks,
                                             colour = self.colour, title = self.title))
             await interaction.message.delete()
+            delete_buttons(self.custom_id)
 
     class DeleteButton(Button):
         """
@@ -87,3 +90,4 @@ class ProgressView(View):  # Create a class called Buttons that subclasses disco
         async def callback(self, interaction: discord.Interaction): 
             """ Deletes the clock when button is pressed """
             await interaction.message.delete()
+            delete_buttons(self.custom_id)

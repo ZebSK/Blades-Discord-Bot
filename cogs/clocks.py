@@ -14,10 +14,6 @@ class ClockCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @discord.slash_command()
-    async def testing(self, ctx):
-        await print("jdn")
-
     @discord.slash_command(description = "Make a singular progress clock")
     async def progress_clock(self, ctx: discord.ApplicationContext,
                     title: discord.Option(str, required = False, default = "Clock", description = "title of clock"), # type: ignore
@@ -45,9 +41,13 @@ class ClockCommands(commands.Cog):
         embed = discord.Embed(title = title)
         embed.set_image(url = f"attachment://{colour}_{segments}_{ticks}.gif")
 
-        # Sends the embed to discord, and attaches the View class that contains the buttons
-        await ctx.respond(file = discord.File(f"resources\clock_images\{colour}_{segments}_{ticks}.gif"), embed = embed,
-                          view = ProgressView(segments = segments, current_ticks = ticks, colour = colour, title = title))
+        # Create the custom id
+        id = generate_random_id()
+        id += f"_{ticks}"
+
+        # Sends the embed to discord, and attaches the View class that contains the button
+        await ctx.respond(file = discord.File(f"bot_files\clock_gifs\{colour}_{segments}_{ticks}.gif"), embed = embed,
+                          view = ProgressView(id = id, segments = segments, current_ticks = ticks, colour = colour, title = title))
 
 
 # Sets up the cog and adds it to the bot
