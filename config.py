@@ -7,5 +7,6 @@ class Settings:
     # Modules to run on the bot
     cogs_list = [
         "general",      # Responses to events and other general functionality
-        "clocks"        # Commands related to creating clocks
+        "clocks",       # Commands related to creating clocks
+        "other"         # Random, fun, and unrelated commands
     ]

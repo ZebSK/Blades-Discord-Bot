@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 
 
-class RandomCommands(commands.Cog):
+class OtherCommands(commands.Cog):
     """
     Module handling all random, fun, and unrelated commands. 
 
@@ -27,4 +27,4 @@ class RandomCommands(commands.Cog):
 
 
 # Sets up the cog and adds it to the bot
-def setup(bot): bot.add_cog(RandomCommands(bot))
+def setup(bot): bot.add_cog(OtherCommands(bot))
