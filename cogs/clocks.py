@@ -46,7 +46,7 @@ class ClockCommands(commands.Cog):
         id += f"_{ticks}"
 
         # Sends the embed to discord, and attaches the View class that contains the button
-        await ctx.respond(file = discord.File(f"bot_files\clock_gifs\{colour}_{segments}_{ticks}.gif"), embed = embed,
+        await ctx.respond(file = discord.File(f"resources\clock_images\{colour}_{segments}_{ticks}.gif"), embed = embed,
                           view = ProgressView(id = id, segments = segments, current_ticks = ticks, colour = colour, title = title))
 
 
