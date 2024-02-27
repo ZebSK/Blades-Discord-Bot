@@ -13,8 +13,8 @@ To get started with this project, follow these steps:
 ### `/progress_clock` 
 Generates a 4, 6, or 8 segment clock in either red or green. Title and starting ticks are customisable
 
-![](resources\demo_images\demo_progress_clock_1.gif)
+![Demo1](https://github.com/ZebSK/DoskBot/blob/main/resources/demo_images/demo_progress_clock_1.gif?raw=true)
 
 Increment, decrement and delete buttons allow the clock to be edited
 
-![](resources\demo_images\demo_progress_clock_2.gif)
+![Demo2](https://github.com/ZebSK/DoskBot/blob/main/resources/demo_images/demo_progress_clock_2.gif?raw=true)
