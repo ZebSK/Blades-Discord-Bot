@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-from utils import *
+from .utils import *
 
 class General(commands.Cog):
     """
